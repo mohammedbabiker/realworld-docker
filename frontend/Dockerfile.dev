@@ -1,0 +1,16 @@
+FROM node:lts-alpine
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+# For development
+RUN npm run build
+
+# Install serve inside container
+RUN npm install -g serve
+RUN npm install -D tailwindcss
