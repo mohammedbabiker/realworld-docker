@@ -7,8 +7,6 @@ const host = process.env.HOST;
 
 const app = express();
 
-connectDB();
-
 const NewSchema = new mongoose.Schema({
   name: String,
   age: Number,
@@ -27,13 +25,14 @@ console.log(babai);
 app.get("/testapi", (req, res) => {
   res.json({
     testapi: true,
-  })
-})
+  });
+});
 
 app.get("/", (req, res) => {
   res.send("Hello, World! from server side api");
 });
 
 app.listen(port, () => {
+  connectDB();
   console.log(`Server is running on ${port}`);
 });
